@@ -8,5 +8,7 @@ var cookies = document.cookie
   .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {});
 var fbclick = cookies._fbc;
 var fbclick_final = fbclick.slice(19, );
-history.pushState({}, null, queryString+'&fbclid='+fbclick_final);
+var fbp = cookies._fbp
+var ua = window.navigator.userAgent
+history.pushState({}, null, queryString+'&fbclid='+fbclick_final+'&fbp='+fbp+'ua'+ua);
 }
